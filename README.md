@@ -1,4 +1,4 @@
-# Mind-Tech-Front
+# Mind-Tech-Web
 
 To start the project, before working, run the command "pnpm install".
 
