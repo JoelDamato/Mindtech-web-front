@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-    <footer className="bg-blue-500 h-[10vh] text-white text-center">
+    <footer className="bg-blue-500 h-[10vh] text-white text-center w-full">
       Footer
     </footer>
   );

@@ -83,7 +83,7 @@ Go back to <Link className='font-bold' to="/">Home page</Link></p>
       <input className='bg-black rounded-[20px] w-[80%] sm:h-[8vh] sm:w-[55%] h-[10vh] tracking-[8px] text-[3vh] sm:text-[4vh]' type="submit" value="SIGN UP" />
       </form>
       <div className='pt-2 font-semibold flex flex-col items-center justify-center text-black'>
-      <p>You don't have an account yet? 
+      <p>Do you already have an account?
 </p>      
 <button className='w-full' onClick={handleClick}>
                                     <label htmlFor="" className="flex flex-row justify-center h-[4vh] w-full font-bold" onClick={handleClick}>
