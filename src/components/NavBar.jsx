@@ -6,7 +6,7 @@ export default function NavBar() {
     <div className="bg-black text-white h-[130px]  mx-auto px-5 flex items-center justify-between  ">
       <a className="text-[24px] w-[278px] flex flex-col items-center hover:text-[#cacaca] transition-colors    cursor-pointer tracking-[20px] font-semibold ">
         <p>MINDTECH</p>
-        <p className="text-[13px] font-light " >TECHNO</p>
+        <p className="text-[13px] font-light" >TECHNO</p>
       </a>
 
 
