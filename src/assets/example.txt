@@ -1,1 +1,0 @@
-Remover el archivo una vez creado un componente
