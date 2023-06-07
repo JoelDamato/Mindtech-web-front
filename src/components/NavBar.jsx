@@ -44,10 +44,10 @@ export default function NavBar() {
       <div className={`  sm:w-[80%] sm:flex flex-grow ${menuOpen ? "block" : "hidden"} mob:absolute mob:right-[140px] mob:top-[20px] sm:h-[8vh] sm:items-center  lg:w-[70%]  `}>
         <ul className="flex  flex-col sm:flex-row  sm:w-[100%] sm:justify-evenly mob:absolute mob:bg-[#000000e0] mob:rounded-[2%] mob:p-1 ">
           <li className="text-lg font-medium sm:mr-4 sm:text-[11px] md:text-[16px] hover:border-b-[1px]  hover:border-white ">
-            <Link to="">Home</Link>
+            <Link to="/">Home</Link>
           </li>
           <li className="text-lg font-medium sm:mr-4 sm:text-[11px] md:text-[16px] hover:border-b-[1px] hover:border-white">
-            <Link to="">Login | Register</Link>
+            <Link to="/register/login">Login | Register</Link>
           </li>
           <li className="text-lg font-medium sm:mr-4 sm:text-[11px] md:text-[16px] hover:border-b-[1px] hover:border-white">
             <Link to="">Store</Link>
