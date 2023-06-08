@@ -54,13 +54,14 @@ export default function Index() {
 
         <div className=' min-h-[80vh]  lg:min-h-[160vh] w-full mb-4 border-t-[2px] border-black bg-white flex flex-col items-center justify-around '>
           <p className='text-black text-[25px] font-montserrat font-semibold tracking-[10px] lg:text-[40px]   p-2' >About Us</p>
+
           <div className=' w-[90%] h-[22vh] bg-[url(./public/gamer.png)]  bg-cover sm:bg-center rounded-br-[23px] rounded-tl-[23px] flex lg:h-[40vh] ' >
             <p className='w-[50%] h-[100%] text-left text-[10px] py-14 p-3  bg-[#000000c9] rounded-tl-[23px] tracking-[1px] sm:text-[18px] lg:text-[35px] lg:py-[100px]  ' >Your best gamer setup, you'll find it at Mindtech</p>
           </div>
-          <div className=' w-[90%] h-[22vh] bg-[url(./public/desktop.png)] bg-cover sm:bg-center  rounded-bl-[23px] rounded-tr-[23px] flex justify-end lg:h-[40vh]  ' >
+          <div className=' w-[90%] h-[22vh] bg-[url(../public/desktop.png)] bg-cover sm:bg-center  rounded-bl-[23px] rounded-tr-[23px] flex justify-end lg:h-[40vh]  ' >
             <p className='w-[50%] h-[100%] text-end text-[10px] py-14 p-3  bg-[#000000c9] rounded-tr-[23px] tracking-[1px] sm:text-[18px] lg:text-[35px] lg:py-[100px]' >We have the best products for all  student needs</p>
           </div>
-          <div className=' w-[90%] h-[22vh] bg-[url(./public/pc.png)] bg-cover sm:bg-center  rounded-br-[23px] rounded-tl-[23px] flex lg:h-[40vh] ' >
+          <div className=' w-[90%] h-[22vh] bg-[url(../public/pc.png)] bg-cover sm:bg-center  rounded-br-[23px] rounded-tl-[23px] flex lg:h-[40vh] ' >
             <p className='w-[50%] h-[100%] text-left text-[10px] py-14 p-3  bg-[#000000e0] rounded-tl-[23px] tracking-[1px] sm:text-[18px] lg:text-[35px] lg:py-[100px]' >Your best gamer setup, you'll find it at Mindtech</p>
           </div>
 
@@ -116,7 +117,7 @@ export default function Index() {
           </p>
         </div>
         {/* contenedor scan qr*/}
-        <div className='w-full min-h-[40vh] pb-4 border-b-[2px] border-black flex flex-col items-center  '>
+        <div className='w-full min-h-[40vh] pb-4 flex flex-col items-center  '>
           <p className='sm:mb-4 text-black font-montserrat font-semibold text-center' >& <br />
             Scan the QR Code and enjoy the mobile version
           </p>

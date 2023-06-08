@@ -47,7 +47,7 @@ export default function NavBar() {
             <Link to="/">Home</Link>
           </li>
           <li className="text-lg font-medium sm:mr-4 sm:text-[11px] md:text-[16px] hover:border-b-[1px] hover:border-white">
-            <Link to="">Login | Register</Link>
+            <Link to="/register/login">Login | Register</Link>
           </li>
           <li className="text-lg font-medium sm:mr-4 sm:text-[11px] md:text-[16px] hover:border-b-[1px] hover:border-white">
             <Link to="/store">Store</Link>
