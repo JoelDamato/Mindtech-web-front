@@ -28,10 +28,10 @@ export default function login() {
     {pages == true? 
     <>
 
-<div className='bg-[#D9D9D9] h-[full] sm:h-[95%] w-full rounded-tl-[60px] sm:w-[95%] sm:rounded-[50px] flex mob:flex-col mob:items-center '>
+<div className='bg-[#D9D9D9] h-[full] sm:h-[95%] w-full rounded-tl-[60px] sm:w-[95%] sm:rounded-[40px] flex mob:flex-col mob:items-center '>
 
     <div className='sm:flex sm:flex-col mob:w-[100%] sm:w-[50%] sm:items-center'>
-      <h1 className='flex justify-center text-black text-[3vh] tracking-[8px] py-8 sm:text-[6vh]'>SIGN IN</h1>
+      <h1 className='flex justify-center text-black text-[3vh] tracking-[8px] font-bold py-8 sm:text-[6vh]'>SIGN IN</h1>
       <form className='flex flex-col w-[100%] items-center gap-5 ' > 
       <legend className=' w-[80%] rounded-lg mob:bg-white  sm:text-[2.5vh] font-semibold text-black tracking-[8px] pl-2'>EMAIL:
       <div className='flex'>
@@ -57,7 +57,7 @@ export default function login() {
 Go back to <Link className='font-bold' to="/">Home page</Link></p>
 </div>
     </div>
-    <img className='mob:hidden w-[50%] rounded-[50px]' src="../public/login.png" alt="" />
+    <img className='mob:hidden w-[50%]  rounded-r-[30px]' src="https://i.pinimg.com/564x/9a/68/ba/9a68ba8e188d4c3faad903d774320579.jpg" alt="" />
     </div>
     </>
 
