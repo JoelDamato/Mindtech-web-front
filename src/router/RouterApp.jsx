@@ -3,6 +3,7 @@ import App from "../App";
 import Demostration from "../pages/Demostration";
 import Index from "../pages/Index";
 import Login from "../pages/login";
+import Details from "../pages/details";
 import Store from "../pages/Store";
 
 export default function RouterApp() {
@@ -10,7 +11,7 @@ export default function RouterApp() {
     <Routes>
       <Route element={<App />}>
         <Route path="/" element={<Index />} />
-       
+        <Route path="/details" element= {<Details/>} />
       </Route>
       <Route path="/register/login" element= {<Login/>} />
       <Route path="/demostration" element={<Demostration />} />
