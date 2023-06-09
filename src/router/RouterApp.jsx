@@ -4,6 +4,7 @@ import AdminPanel from "../pages/AdminPanel";
 import Demostration from "../pages/Demostration";
 import Index from "../pages/Index";
 import Login from "../pages/login";
+import Details from "../pages/details";
 import Store from "../pages/Store";
 import Admin from "../pages/AdminPanel";
 
@@ -12,7 +13,7 @@ export default function RouterApp() {
     <Routes>
       <Route element={<App />}>
         <Route path="/" element={<Index />} />
-       
+        <Route path="/details" element= {<Details/>} />
       </Route>
       <Route path="/register/login" element= {<Login/>} />
       <Route path="/demostration" element={<Demostration />} />
