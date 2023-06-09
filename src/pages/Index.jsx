@@ -21,8 +21,12 @@ export default function Index() {
       <div className='bg-[url(./public/line.png)] bg-center md:bg-center w-full  bg-cover  flex flex-col items-center  justify-center h-[100vh]' >
         <p className='font-montserrat  tracking-[16px] mob:text-[16px] sm:text-[40px] md:text-[50px] lg:text-[75px] font-bold mb-10 text-center ' >Welcome to the future</p>
         <p className='font-montserrat text-center font-bold text-[20px]  mob:text-[12px] ' >Embrace Tomorrow's Technology: Explore revolutionary <br /> innovations and cutting-edge perspectives on our forward-looking technology website.</p>
-        <button onClick={handleSeeMore} className=' transition-all duration-300 hover:scale-[1.2] border-[2px] w-[220px] h-[6vh] rounded-[2%] font-bold bg-[#000000fd] absolute top-[600px] ' >
-          See More
+        <button onClick={handleSeeMore} className=' transition-all duration-300 hover:scale-[1.2] border-[2px] w-[220px] h-[6vh] rounded-[2%] font-bold bg-[#000000fd] absolute top-[600px] flex flex-col justify-center items-center ' >
+          See More 
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-6 h-6">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M19.5 5.25l-7.5 7.5-7.5-7.5m15 6l-7.5 7.5-7.5-7.5" />
+          </svg>
+
         </button>
        
       </div>
@@ -35,8 +39,9 @@ export default function Index() {
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 text-black">
             <path stroke-linecap="round" stroke-linejoin="round" d="M11.25 9l-3 3m0 0l3 3m-3-3h7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
           </svg>
-          <div className='w-[90%] h-[100%]  flex justify-center items-center p-2 ' >
+          <div className='w-[90%] h-[100%]  flex justify-around items-center p-2  ' >
             <Card />
+           
           </div>
           <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" className="w-6 h-6 text-black">
             <path stroke-linecap="round" stroke-linejoin="round" d="M12.75 15l3-3m0 0l-3-3m3 3h-7.5M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -49,8 +54,9 @@ export default function Index() {
 
         <div className=' min-h-[80vh]  lg:min-h-[160vh] w-full mb-4 border-t-[2px] border-black bg-white flex flex-col items-center justify-around '>
           <p className='text-black text-[25px] font-montserrat font-semibold tracking-[10px] lg:text-[40px]   p-2' >About Us</p>
-          <div className=' w-[90%] h-[22vh] bg-[url(../public/gamer.png)]  bg-cover sm:bg-center rounded-br-[23px] rounded-tl-[23px] flex lg:h-[40vh] ' >
-            <p className='w-[50%] h-[100%] text-left text-[10px] py-14 p-3  bg-[#000000c9] rounded-tl-[23px] tracking-[1px] sm:text-[18px] lg:text-[35px] lg:py-[100px] ' >Your best gamer setup, you'll find it at Mindtech</p>
+
+          <div className=' w-[90%] h-[22vh] bg-[url(./public/gamer.png)]  bg-cover sm:bg-center rounded-br-[23px] rounded-tl-[23px] flex lg:h-[40vh] ' >
+            <p className='w-[50%] h-[100%] text-left text-[10px] py-14 p-3  bg-[#000000c9] rounded-tl-[23px] tracking-[1px] sm:text-[18px] lg:text-[35px] lg:py-[100px]  ' >Your best gamer setup, you'll find it at Mindtech</p>
           </div>
           <div className=' w-[90%] h-[22vh] bg-[url(../public/desktop.png)] bg-cover sm:bg-center  rounded-bl-[23px] rounded-tr-[23px] flex justify-end lg:h-[40vh]  ' >
             <p className='w-[50%] h-[100%] text-end text-[10px] py-14 p-3  bg-[#000000c9] rounded-tr-[23px] tracking-[1px] sm:text-[18px] lg:text-[35px] lg:py-[100px]' >We have the best products for all  student needs</p>
@@ -70,7 +76,7 @@ export default function Index() {
               <path stroke-linecap="round" stroke-linejoin="round" d="M16.5 10.5V6.75a4.5 4.5 0 10-9 0v3.75m-.75 11.25h10.5a2.25 2.25 0 002.25-2.25v-6.75a2.25 2.25 0 00-2.25-2.25H6.75a2.25 2.25 0 00-2.25 2.25v6.75a2.25 2.25 0 002.25 2.25z" />
             </svg>
             <p className='font-montserrat font-semibold tracking-[2px] text-[#00A524] text-[20px] text-center  ' >Secure <br /> Payments</p>
-            <p className='text-black text-center font-medium text-[14px] md:text-[16px] ' >Our platform offers the highest security when making a payment.</p>
+            <p className='text-black text-center font-medium text-[14px] md:text-[16px ] lg:text-[25px]' >Our platform offers the highest security when making a payment.</p>
 
           </div>
           <div className='md:p-2 w-full h-[40vh] flex flex-col items-center justify-around mt-4 '>
@@ -79,7 +85,7 @@ export default function Index() {
             </svg>
 
             <p className='font-montserrat font-semibold tracking-[2px] text-[#00A524] text-[20px] text-center ' >Shipping</p>
-            <p className='text-black text-center font-medium text-[14px] md:text-[16px]' >Shipping nationwide, express in 24hrs, tracking system.</p>
+            <p className='text-black text-center font-medium text-[14px] md:text-[16px] lg:text-[25px]' >Shipping nationwide, express in 24hrs, tracking system.</p>
 
           </div>
           <div className='md:p-2 w-full h-[40vh] flex flex-col items-center justify-around mt-4 '>
@@ -88,7 +94,7 @@ export default function Index() {
             </svg>
 
             <p className='font-montserrat font-semibold tracking-[2px] text-[#00A524] text-[20px] text-center ' >Interest-free <br /> installments</p>
-            <p className='text-black text-center font-medium text-[14px] md:text-[16px]' >All means of payment, cash, credit cards, etc.</p>
+            <p className='text-black text-center font-medium text-[14px] md:text-[16px] lg:text-[25px]' >All means of payment, cash, credit cards, etc.</p>
 
           </div>
         </div>
