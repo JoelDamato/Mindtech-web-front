@@ -25,10 +25,15 @@ export default function RouterApp() {
     <Routes>
       <Route element={<App />}>
         <Route path="/" element={<Index />} />
-        <Route path="/details" element={<Details />} />
+        <Route path="/details/:id" element={<Details />} />
       </Route>
       <Route path="/register/login" element={<Login />} />
-      <Route path="/store" element={<Store />} />
+      <Route
+        path="/store"
+        element={
+          <Store allProducts={allProducts} getAllProducts={getAllProducts} />
+        }
+      />
       <Route path="/admin" element={<Admin />} />
       <Route
         path="/demostration"

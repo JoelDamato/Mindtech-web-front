@@ -13,7 +13,7 @@ export default function Demostration({
 }) {
   useEffect(() => {
     getAllProducts();
-    getOneProduct("6483501af4145b9da4a0143d");
+    getOneProduct("64835a355c2bd36e9a48d5e7");
     getUser("joakin@mt.com");
   }, []);
 
@@ -45,7 +45,7 @@ export default function Demostration({
         <h2>Product:</h2>
         {oneProduct && (
           <div>
-            <p>{oneProduct._id}</p>
+            <p>{oneProduct.name}</p>
           </div>
         )}
       </div>
