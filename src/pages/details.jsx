@@ -2,7 +2,12 @@ import React, { useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import useStore from "../store/store";
 
-export default function details() {
+export default function Details() {
+
+  const cartItems = useStore((state) => state.cartItems);
+  const setCartItems = useStore((state) => state.setCartItems);
+
+    console.log(cartItems)
 
   let [image, setImage] = useState(0)
   const { id } = useParams()
@@ -24,6 +29,14 @@ export default function details() {
       setImage(array.length - 1)
     }
   }
+
+
+
+  const addToCart = (product) => {
+    const newCartItems = [...cartItems, product];
+    setCartItems(newCartItems);
+  };
+
 
   return (
     <>
@@ -57,7 +70,7 @@ export default function details() {
             <p className='ml-[3%] mt-5 font-bold text-[#00A524] text-[2.5vh] tracking-[4px]'>Buy it now in 12 installments without interest! </p>
             <p className=' font-bold text-[#00A524] text-[2.5vh] tracking-[2px]'>${(oneProduct.price / 12).toFixed(2)}</p>
             <p className='mt-2  text-black font-semibold flex text-[3vh] items-center'  ><img className="mr-5 w-[20px]" src="../public/menos.png" alt="" /> Amount : 1 <img className="ml-5  w-[18px] h-[2vh] " src="../public/mas.png" alt="" /> </p>
-            <div className="mt-5  text-black text-[5vh] font-bold flex justify-center items-center  h-[10vh] w-[20vw] mob:w-[80%] mob:text-[3vh] bg-[#00A524] rounded-[10vh] tl:text-[2vh]">
+            <div onClick={() => addToCart(oneProduct)} className="mt-5  text-black text-[5vh] font-bold flex justify-center items-center  h-[10vh] w-[20vw] mob:w-[80%] mob:text-[3vh] bg-[#00A524] rounded-[10vh] tl:text-[2vh] cursor-pointer">
               + ADD TO CART
 
             </div>
