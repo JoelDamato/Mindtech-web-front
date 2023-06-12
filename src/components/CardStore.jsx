@@ -1,11 +1,23 @@
 import React from "react";
 import { useNavigate } from "react-router-dom";
+import useStore from "../store/store";
 
 export default function CardStore({ allProducts }) {
   const navigate = useNavigate();
   const goDetails = (id) => {
     navigate("/details/" + id);
   };
+
+  const cartItems = useStore((state) => state.cartItems);
+  const setCartItems = useStore((state) => state.setCartItems);
+
+  const addToCart = (product) => {
+    const newCartItems = [...cartItems, product];
+    setCartItems(newCartItems);
+  };
+
+
+
   return (
     <>
       {allProducts?.map((item, index) => (
@@ -25,9 +37,9 @@ export default function CardStore({ allProducts }) {
             >
               {item.name}
             </p>
-            <p className="py-2">${item.price}</p>
+            <p className="py-2">{item.price}</p>
             <p className="text-[30px] tracking-[2px] font-light">☆☆☆☆☆</p>
-            <button className="bg-black w-[38vw] rounded-[10px] md:rounded-[23px] md:w-[20vw] p-2 h-[7vh] lg:w-[12vw]">
+            <button onClick={() => addToCart(item)} className="bg-black w-[38vw] rounded-[10px] md:rounded-[23px] md:w-[20vw] p-2 h-[7vh] lg:w-[12vw]">
               <p className="text-white">+ Add to cart</p>
             </button>
           </div>
