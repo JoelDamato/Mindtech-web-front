@@ -20,6 +20,11 @@ export default function RouterApp() {
     token,
     login,
     logout,
+    selectCheckboxes,
+    setSelectCheckboxes,
+    deleteProducts,
+    createProduct
+
   } = useStore();
   return (
     <Routes>
@@ -34,7 +39,7 @@ export default function RouterApp() {
           <Store allProducts={allProducts} getAllProducts={getAllProducts} />
         }
       />
-      <Route path="/admin" element={<Admin />} />
+      <Route path="/admin"  element={<Admin allProducts={allProducts} getAllProducts={getAllProducts} deleteProducts={deleteProducts} createProduct={createProduct} />} />
       <Route
         path="/demostration"
         element={
