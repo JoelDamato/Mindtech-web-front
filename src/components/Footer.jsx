@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Footer() {
   return (
-<footer className="w-full flex justify-center">
+<footer className="w-full bg-white flex justify-center">
     <div className="flex flex-col items-center bg-white h-[40vh] border-t-[1px] border-black text-black text-center w-[90%]">
       <h1 className="mt-3 text-[4vh] font-semibold tracking-[7px]">MINDTECH</h1>
       <h2 className="text-[2vh] tracking-[3px] mt-[-0.5%]">TECNHO</h2>
@@ -15,7 +15,7 @@ export default function Footer() {
         
       </div>
       <p className="mt-[3%] tracking-[5px] ">© 2023 Copyright:</p>
-      <p className="font-semibold sm:tracking-[10.5px] mt-4">Aguirre Denise | Dimaro Joaquin  | Damato Joel |  Meneses Joaquin  | Orozco Jorge </p>
+      <p className="font-semibold sm:tracking-[9px] mt-4">Aguirre Denise | Dimaro Joaquin  | Damato Joel |  Meneses Joaquin  | Orozco Jorge </p>
     </div>
     </footer>
   );

@@ -18,7 +18,7 @@ export default function Index() {
   
   return (
     <div className="bg-black min-h-[200vh] text-white flex flex-col justify-start  items-center font-montserrat w-full ">
-      <div className='bg-[url(./public/line.png)] bg-center md:bg-center w-full  bg-cover  flex flex-col items-center  justify-center h-[100vh]' >
+      <div className='bg-[url(https://i.postimg.cc/KzGRwCtF/line.png)] bg-center md:bg-center w-full  bg-cover  flex flex-col items-center  justify-center h-[100vh]' >
         <p className='font-montserrat  tracking-[16px] mob:text-[16px] sm:text-[40px] md:text-[50px] lg:text-[75px] font-bold mb-10 text-center ' >Welcome to the future</p>
         <p className='font-montserrat text-center font-bold text-[20px]  mob:text-[12px] ' >Embrace Tomorrow's Technology: Explore revolutionary <br /> innovations and cutting-edge perspectives on our forward-looking technology website.</p>
         <button onClick={handleSeeMore} className=' transition-all duration-300 hover:scale-[1.2] border-[2px] w-[220px] h-[6vh] rounded-[2%] font-bold bg-[#000000fd] absolute top-[600px] flex flex-col justify-center items-center ' >
@@ -55,13 +55,13 @@ export default function Index() {
         <div className=' min-h-[80vh]  lg:min-h-[160vh] w-full mb-4 border-t-[2px] border-black bg-white flex flex-col items-center justify-around '>
           <p className='text-black text-[25px] font-montserrat font-semibold tracking-[10px] lg:text-[40px]   p-2' >About Us</p>
 
-          <div className=' w-[90%] h-[22vh] bg-[url(./public/gamer.png)]  bg-cover sm:bg-center rounded-br-[23px] rounded-tl-[23px] flex lg:h-[40vh] ' >
+          <div className=' w-[90%] h-[22vh] bg-[url(https://i.postimg.cc/4ynnNt8S/gamer.png)]  bg-cover sm:bg-center rounded-br-[23px] rounded-tl-[23px] flex lg:h-[40vh] ' >
             <p className='w-[50%] h-[100%] text-left text-[10px] py-14 p-3  bg-[#000000c9] rounded-tl-[23px] tracking-[1px] sm:text-[18px] lg:text-[35px] lg:py-[100px]  ' >Your best gamer setup, you'll find it at Mindtech</p>
           </div>
-          <div className=' w-[90%] h-[22vh] bg-[url(../public/desktop.png)] bg-cover sm:bg-center  rounded-bl-[23px] rounded-tr-[23px] flex justify-end lg:h-[40vh]  ' >
+          <div className=' w-[90%] h-[22vh] bg-[url(https://i.postimg.cc/WbhJ2RC1/desktop.png)] bg-cover sm:bg-center  rounded-bl-[23px] rounded-tr-[23px] flex justify-end lg:h-[40vh]  ' >
             <p className='w-[50%] h-[100%] text-end text-[10px] py-14 p-3  bg-[#000000c9] rounded-tr-[23px] tracking-[1px] sm:text-[18px] lg:text-[35px] lg:py-[100px]' >We have the best products for all  student needs</p>
           </div>
-          <div className=' w-[90%] h-[22vh] bg-[url(../public/pc.png)] bg-cover sm:bg-center  rounded-br-[23px] rounded-tl-[23px] flex lg:h-[40vh] ' >
+          <div className=' w-[90%] h-[22vh] bg-[url(https://i.postimg.cc/1tvfQMKF/pc.png)] bg-cover sm:bg-center  rounded-br-[23px] rounded-tl-[23px] flex lg:h-[40vh] ' >
             <p className='w-[50%] h-[100%] text-left text-[10px] py-14 p-3  bg-[#000000e0] rounded-tl-[23px] tracking-[1px] sm:text-[18px] lg:text-[35px] lg:py-[100px]' >Your best gamer setup, you'll find it at Mindtech</p>
           </div>
 
@@ -103,9 +103,9 @@ export default function Index() {
 
         <div className='  sm:flex-row w-full min-h-[30vh] flex flex-col items-center justify-around '>
           <div className='flex w-full justify-evenly  sm:w-[30%]'>
-            <img className='h-[28px] w-[38px]  ' src="./public/visa.png" alt="" />
-            <img className='h-[28px] w-[38px]  ' src="./public/mp.png" alt="" />
-            <img className='h-[28px] w-[38px]  ' src="./public/master.png" alt="" />
+            <img className='h-[28px] w-[38px]  ' src="https://i.postimg.cc/q7XNmphj/visa.png" alt="" />
+            <img className='h-[28px] w-[38px]  ' src="https://i.postimg.cc/MKNfHPJb/mp.png" alt="" />
+            <img className='h-[28px] w-[38px]  ' src="https://i.postimg.cc/9Q9R7dW3/master.png" alt="" />
           </div>
           <button className='bg-black w-[50vw] h-[5vh] rounded-[8px] sm:w-[40%] sm:h-[8vh]'>
             REGISTER NOW!
@@ -122,7 +122,7 @@ export default function Index() {
             Scan the QR Code and enjoy the mobile version
           </p>
           <div className='border-[2px] rounded-[45px] border-black w-[280px] h-[280px] '>
-             <img className='object-contain p-10 ' src="./public/qr.png" alt="" />
+             <img className='object-contain p-10 ' src="https://i.postimg.cc/LsMqBJXJ/qr.png" alt="" />
           </div>
         </div>
       </div>
