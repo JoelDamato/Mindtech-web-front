@@ -524,11 +524,6 @@ const data = ['entrega pendiente','entrega pendiente','entrega pendiente','entre
         </div>
 
 
-
-          
-
-
-
             {/*Div contenedor del apartado shipments */}
 
         <div className='w-full min-h-[70vh] bg-white flex flex-col items-center justify-evenly'>
