@@ -14,7 +14,8 @@ export default function NavBar() {
   const numerProducts= cartItems?.length
 
   const handleCartClick = () => {
-    setCartOpen(!cartOpen);
+    setCartOpen(!cartOpen)
+    setMenuOpen(!menuOpen);
   };
 
   return (
@@ -87,7 +88,7 @@ export default function NavBar() {
           </div>
         </ul>
         </div>
-        {cartOpen? <Cart /> : null}
+        {cartOpen? <Cart cartOpen={cartOpen}  handleCartClick={handleCartClick} /> : null}
       </div>
     );
   }
