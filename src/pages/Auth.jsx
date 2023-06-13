@@ -52,7 +52,7 @@ export default function AuthForm() {
         login(res.data.token);
         localStorage.setItem("token", res.data.token);
         localStorage.setItem("user", JSON.stringify(res.data.user));
-        navigate("auth-form");
+        navigate("/auth-form");
       })
       .catch((err) => {
         console.log(err.response.data.message);
