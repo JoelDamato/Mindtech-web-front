@@ -64,9 +64,11 @@ export default function NavBar() {
           <li className="text-lg font-medium sm:mr-4 sm:text-[11px] md:text-[16px] hover:border-b-[1px]  hover:border-white ">
             <Link to="/">Home</Link>
           </li>
-          <li className="text-lg font-medium sm:mr-4 sm:text-[11px] md:text-[16px] hover:border-b-[1px] hover:border-white">
-            <Link to="/auth-form">Login | Register</Link>
-          </li>
+          {!token && (
+            <li className="text-lg font-medium sm:mr-4 sm:text-[11px] md:text-[16px] hover:border-b-[1px] hover:border-white">
+              <Link to="/auth-form">Login | Register</Link>
+            </li>
+          )}
           <li className="text-lg font-medium sm:mr-4 sm:text-[11px] md:text-[16px] hover:border-b-[1px] hover:border-white">
             <Link to="/store">Store</Link>
           </li>
