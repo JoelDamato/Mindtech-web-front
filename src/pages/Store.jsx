@@ -157,7 +157,7 @@ export default function Store() {
           <div className="w-full h-[15vh]  flex justify-around items-center">
             <div
               onClick={clickFilter}
-              className="w-[45vw] h-[10vh] border flex justify-evenly items-center "
+              className="w-[45vw] h-[10vh] border flex justify-center items-center "
             >
               <p>Filters</p>
               <svg
@@ -254,7 +254,7 @@ export default function Store() {
         <div className="p-4 fixed text-[#00000083] sm:w-[30%] md:w-[25%] lg:w-[20%] xl:w-[18%] sm:h-full overflow-y-auto">
           <div className="flex flex-col items-center">
             <p className="font-medium">Filters:</p>
-            <div className="w-full min-h-[30vh] py-4 flex flex-col justify-around">
+            <div className="w-full min-h-[10vh]  flex flex-col justify-around">
               <Select
                 options={categories?.map((category) => ({
                   value: category._id,
@@ -266,7 +266,7 @@ export default function Store() {
                 components={animatedComponents}
               />
             </div>
-            <div className="w-full min-h-[30vh] py-4 flex flex-col justify-around">
+            <div className="w-full min-h-[10vh]  flex flex-col justify-around">
               <Select
                 options={brands?.map((brand) => ({
                   value: brand._id,
@@ -278,12 +278,12 @@ export default function Store() {
                 components={animatedComponents}
               />
             </div>
-            <div className="w-full h-[20vh] flex flex-col items-start justify-around mb-4">
-              <p className="pl-2 font-medium">Price:</p>
+            <div className="w-full h-[20vh] flex flex-col items-center justify-center mb-4">
+              <p className="font-medium mb-4">Price:</p>
               <div className="w-full flex justify-between items-center">
                 <div className="flex flex-col">
                   <input
-                    className="focus:outline-none w-[12vw] md:w-[10vw] lg:w-[8vw] h-[5vh] rounded-[5px] bg-white border border-[#727272a8] p-2 mb-2"
+                    className="focus:outline-none w-[12vw] md:w-[10vw] lg:w-[8vw] h-[5vh] rounded-[5px] bg-white border border-[#727272a8]  mb-2"
                     type="number"
                     value={minPrice}
                     onChange={handleMinPriceChange}
