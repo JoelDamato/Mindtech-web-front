@@ -4,6 +4,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Navbar from "../components/NavBar";
 import axios from "axios";
 import apiUrl from "../../api";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 import useStore from "../store/store";
 
@@ -31,10 +33,20 @@ export default function AuthForm() {
         login(res.data.token);
         localStorage.setItem("token", res.data.token);
         getUser(res.data.user.email);
+        console.log(res.data.user.id);
+        axios.post(
+          apiUrl + "carts/createCartOnLogin?userID=" + res.data.user.id
+        );
         navigate("/store");
       })
       .catch((err) => {
-        console.log(err.response.data.message);
+        const errorMessages = err.response.data.message;
+        errorMessages.forEach((errorMessage) => {
+          toast.error(errorMessage);
+        });
+        const errors = errorMessages.map((errorMessage) => ({
+          message: errorMessage,
+        }));
       });
   };
 
@@ -54,7 +66,13 @@ export default function AuthForm() {
         navigate("/auth-form");
       })
       .catch((err) => {
-        console.log(err.response.data.message);
+        const errorMessages = err.response.data.message;
+        errorMessages.forEach((errorMessage) => {
+          toast.error(errorMessage);
+        });
+        const errors = errorMessages.map((errorMessage) => ({
+          message: errorMessage,
+        }));
       });
   };
 
@@ -79,6 +97,7 @@ export default function AuthForm() {
         </div>
         {pages == true ? (
           <>
+            <ToastContainer position="top-right" />
             <div className="bg-[#D9D9D9] h-[full] sm:h-[95%] w-full rounded-tl-[60px] sm:w-[95%] sm:rounded-[40px] flex mob:flex-col mob:items-center ">
               <div className="sm:flex sm:flex-col mob:w-[100%] sm:w-[50%] sm:items-center">
                 <h1 className="flex justify-center text-black text-[3vh] tracking-[8px] font-bold py-8 sm:text-[6vh]">
@@ -170,6 +189,7 @@ export default function AuthForm() {
           </>
         ) : (
           <>
+            <ToastContainer position="top-left" />
             <div className="bg-[#D9D9D9] h-[full] sm:h-[95%] w-full rounded-tl-[60px] sm:w-[95%] sm:rounded-[50px] flex mob:flex-col mob:items-center ">
               <img
                 className="mob:hidden w-[46%] rounded-[50px]"

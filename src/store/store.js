@@ -27,10 +27,12 @@ const useStore = create((set) => ({
     try {
       const response = await axios.get(apiUrl + "users/one?one=" + user);
       set({ user: response.data.user });
+      localStorage.setItem("user", JSON.stringify(response.data.user));
     } catch (error) {
       console.error("Error fetching product:", error);
     }
   },
+
   login: async (token) => {
     try {
       set({ token: token });
@@ -82,6 +84,38 @@ const useStore = create((set) => ({
       throw new Error(error.message);
     }
   },
+
+  cart: undefined,
+  setCart: (parametro) => set({ cart: parametro }),
+
+  favorites : [],
+  handleFavorite: (itemId, itemName) => {
+    set((state) => {
+      if (state.favorites.some((fav) => fav._id === itemId)) {
+        return { favorites: state.favorites.filter((fav) => fav.id !== itemId) };
+      } else {
+
+        return { favorites: [...state.favorites, { _id: itemId, name: itemName }] };
+      }
+    });
+    axios
+      .post(`${apiUrl}products/rating`, { _id: itemId, name: itemName })
+      .then((response) => {
+        if (response.status !== 200) {
+          throw new Error('Failed to add/remove favorite');
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
+  },
+
+  removeFavorite: (id) => {
+    set((state) => ({
+      favorites: state.favorites.filter((fav) => fav.id !== id),
+    }));
+  },
+
 }));
 
 export default useStore;

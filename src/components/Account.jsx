@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import apiUrl from "../../api";
@@ -8,7 +8,15 @@ import useStore from "../store/store";
 export default function Account() {
   const navigate = useNavigate();
 
-  const { logout, user } = useStore();
+  const { logout, user, getUser } = useStore();
+
+  useEffect(() => {
+    // Verificar si hay un usuario guardado en el almacenamiento local
+    const savedUser = JSON.parse(localStorage.getItem("user"));
+    if (savedUser && !user) {
+      getUser(savedUser.email);
+    }
+  }, [user]);
 
   const [modalOpen, setModalOpen] = useState(false);
 
@@ -27,6 +35,7 @@ export default function Account() {
         console.log(res.data.message);
         logout();
         localStorage.removeItem("token");
+        localStorage.removeItem("user");
         navigate("/");
       })
       .catch((err) => {
