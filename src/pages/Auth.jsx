@@ -10,7 +10,7 @@ import useStore from "../store/store";
 export default function AuthForm() {
   const navigate = useNavigate();
 
-  const { login } = useStore();
+  const { login, getUser } = useStore();
 
   const [pages, setPages] = useState(true);
 
@@ -30,7 +30,7 @@ export default function AuthForm() {
         console.log(res.data.message);
         login(res.data.token);
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
+        getUser(res.data.user.email);
         navigate("/store");
       })
       .catch((err) => {
@@ -51,7 +51,6 @@ export default function AuthForm() {
         console.log(res.data.message);
         login(res.data.token);
         localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
         navigate("/auth-form");
       })
       .catch((err) => {
@@ -164,7 +163,7 @@ export default function AuthForm() {
               </div>
               <img
                 className="mob:hidden w-[50%]  rounded-r-[30px]"
-                src="https://i.pinimg.com/564x/9a/68/ba/9a68ba8e188d4c3faad903d774320579.jpg"
+                src="https://i.postimg.cc/SR5y1wX9/login.png"
                 alt=""
               />
             </div>
@@ -174,7 +173,7 @@ export default function AuthForm() {
             <div className="bg-[#D9D9D9] h-[full] sm:h-[95%] w-full rounded-tl-[60px] sm:w-[95%] sm:rounded-[50px] flex mob:flex-col mob:items-center ">
               <img
                 className="mob:hidden w-[46%] rounded-[50px]"
-                src="../public/register.png"
+                src="https://i.postimg.cc/vBZgJwm2/register.jpg"
                 alt=""
               />
               <div className="sm:flex sm:flex-col mob:w-[100%] sm:w-[50%] sm:items-center">
