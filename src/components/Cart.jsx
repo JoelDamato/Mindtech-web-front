@@ -1,6 +1,7 @@
 import React from 'react';
 import useStore from '../store/store';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 const CartItem = ({ item }) => {
   const [amount,setAmount]=useState(1)
@@ -19,6 +20,27 @@ const CartItem = ({ item }) => {
     console.log(item._id)
     removeCartItem(item._id);
   };
+  
+  let [cart, setCart] = useState();
+
+  const viewCart = () => {
+    useEffect(() => {
+      axios
+        .get("http://localhost:3000/carts/one?one=joakin@mt.com")
+        .then((res) => {
+          setCart(res.data);
+        })
+        .catch((res) => {
+          console.log(res);
+        });
+    }, []);
+  };
+
+  viewCart();
+  console.log(cart);
+
+
+
 
   return (
     <div className="rounded-lg border-1 border-black bg-white w-[90%] h-[17vh] p-1" key={item.id}>
