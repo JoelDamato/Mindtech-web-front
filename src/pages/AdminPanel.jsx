@@ -7,6 +7,8 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import Chart from "../components/Chart";
 import LineChart from "../components/LineChart";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 export default function AdminPanel({ allProducts, getAllProducts }) {
   //declaracion de variables para setear estados:
@@ -108,9 +110,9 @@ export default function AdminPanel({ allProducts, getAllProducts }) {
       getAllProducts();
       console.log(res, "Producto creado");
       console.log(newProduct);
-    } catch (error) {
-      console.log("Error al cargar las imágenes o crear el producto:", error);
-    }
+    } catch (err) {
+      console.log(err)
+    } 
   };
 
   //funcion para mostrar los datos de un producto a editar:
@@ -286,11 +288,13 @@ export default function AdminPanel({ allProducts, getAllProducts }) {
             {/*Div contenedor del apartado create product, el condicional maneja los estados para renderizar las vistas*/}
 
             {currentDiv === 1 && (
+              
               <form
                 onSubmit={handleSubmit}
                 className="w-[90%] p-2 min-h-[90vh] mt-4 flex flex-col items-center pl-2 justify-around bg-[#0000000e] text-black shadow-md shadow-[#000000a8] rounded-[15px] sm:w-[70%]  md:w-[50%] "
                 action=""
               >
+                <ToastContainer position="top-right" />
                 <p className="font-bold w-[40%]  h-[6vh] py-3 rounded-[10px] text-center  bg-[#35b1164c] font-montserrat  text-[14px]">
                   Create new product
                 </p>

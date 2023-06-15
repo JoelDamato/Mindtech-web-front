@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import CardStore from "../components/CardStore";
+import { Link } from "react-router-dom";
 
 import useStore from "../store/store";
 
@@ -172,9 +173,9 @@ export default function Cart() {
               >
                 Clear cart
               </button>
-              <button className="btn btn-outline btn-success w-full mb-2">
+              <Link to='/checkout' className="btn btn-outline btn-success w-full mb-2">
                 Continue to checkout
-              </button>
+              </Link>
             </div>
           </div>
         </div>

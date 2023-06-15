@@ -6,6 +6,7 @@ import AuthForm from "../pages/Auth";
 import Details from "../pages/details";
 import Store from "../pages/Store";
 import Admin from "../pages/AdminPanel";
+import Checkout from "../components/Checkout";
 
 import useStore from "../store/store";
 
@@ -41,6 +42,7 @@ export default function RouterApp() {
         }
       />
       <Route path="/admin"  element={<Admin useFavoritesStore={useFavoritesStore} allProducts={allProducts} getAllProducts={getAllProducts} deleteProducts={deleteProducts} createProduct={createProduct} />} />
+      <Route path="/checkout" element={<Checkout/>}/>
       <Route
         path="/demostration"
         element={
