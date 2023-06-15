@@ -4,10 +4,6 @@ import useStore from "../store/store";
 
 export default function Cart() {
   const { allProducts, getAllProducts,setCart,cart,user,formatPrice } = useStore();
-  
-
-
-
   useEffect(() => {
     if (!allProducts?.length) {
       getAllProducts();
@@ -150,7 +146,9 @@ export default function Cart() {
                 <div className="flex items-center">
                   <img className="w-[30%] h-[10vh]" src={item.images} alt="" />
                   <div className="flex flex-col items-center justify-center w-[70%]">
-                  <p className="py-2">{formatPrice(item.price)}</p>
+
+                    <p className="text-black">Price:{formatPrice(item.price)}</p>
+
                     <div className="flex justify-center items-center">
                       <img
                         className="cursor-pointer w-[18px] h-[18px] mr-2"
@@ -172,7 +170,9 @@ export default function Cart() {
               </div>
             ))}
             <div className="w-full justify-end">
+
             <p className="text-xl font-bold text-center text-white mb-2">
+
                 Total:{formatPrice(cart?.total)}
               </p>
               <button

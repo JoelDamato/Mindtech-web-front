@@ -122,7 +122,7 @@ export default function CardStore({ allProducts }) {
                 </svg>
               </div>
             </label>
-                 {token ? (    <button   onClick={() => addProduct(cart._id, item._id)}
+              {token ? (    <button   onClick={() => addProduct(cart._id, item._id)}
               className="bg-black w-[38vw] rounded-[10px] md:rounded-[23px] md:w-[20vw] p-2 h-[7vh] lg:w-[12vw]"
             >
               <p className="text-white">+ Add to cart</p>
