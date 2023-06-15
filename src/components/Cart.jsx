@@ -3,10 +3,8 @@ import axios from "axios";
 import useStore from "../store/store";
 import { Link } from "react-router-dom";
 export default function Cart() {
-  const { allProducts, getAllProducts,setCart,cart,user } = useStore();
-  
 
-
+  const { allProducts, getAllProducts,setCart,cart,user,formatPrice } = useStore();
 
   useEffect(() => {
     if (!allProducts?.length) {
@@ -150,7 +148,9 @@ export default function Cart() {
                 <div className="flex items-center">
                   <img className="w-[30%] h-[10vh]" src={item.images} alt="" />
                   <div className="flex flex-col items-center justify-center w-[70%]">
-                    <p className="text-black">Price:${item.price}</p>
+
+                    <p className="text-black">Price:{formatPrice(item.price)}</p>
+
                     <div className="flex justify-center items-center">
                       <img
                         className="cursor-pointer w-[18px] h-[18px] mr-2"
@@ -166,14 +166,16 @@ export default function Cart() {
                         onClick={() => addProduct(cart._id, item.product_id)}
                       />
                     </div>
-                    <p className="text-black">Subtotal:${item.subtotal}</p>
+                    <p className="text-black">Subtotal:{formatPrice(item.subtotal)}</p>
                   </div>
                 </div>
               </div>
             ))}
             <div className="w-full justify-end">
-              <p className="text-xl font-bold text-center text-white mb-2">
-                Total:${cart?.total}
+
+            <p className="text-xl font-bold text-center text-white mb-2">
+
+                Total:{formatPrice(cart?.total)}
               </p>
               <button
                 onClick={() => clearCart(cart._id)}

@@ -4,10 +4,12 @@ import axios from "axios";
 import useStore from "../store/store";
 
 export default function CardStore({ allProducts }) {
-  const { cart, setCart, favorites, handleFavorite, removeFavorite } =
+
+  const { cart, setCart, favorites, handleFavorite, removeFavorite,formatPrice,token } =
     useStore();
     console.log(favorites);
     console.log(cart)
+
   const navigate = useNavigate();
   const goDetails = (id) => {
     navigate("/details/" + id);
@@ -42,6 +44,10 @@ export default function CardStore({ allProducts }) {
     viewCart("joakin@mt.com"); // Pasar el correo como parámetro
   }, []);
 
+  const registerPlease = () => {
+    window.my_modal_1.showModal();
+  };
+
   return (
     <>
       {allProducts?.map((item, index) => (
@@ -61,7 +67,7 @@ export default function CardStore({ allProducts }) {
             >
               {item.name}
             </p>
-            <p className="py-2">${item.price}</p>
+            <p className="py-2">{formatPrice(item.price)}</p>
             <p className="text-[30px] tracking-[2px] font-light">☆☆☆☆☆</p>
             <label className="swap swap-flip text-9xl">
               {/* this hidden checkbox controls the state */}
@@ -118,15 +124,23 @@ export default function CardStore({ allProducts }) {
                 </svg>
               </div>
             </label>
-            <button
-              onClick={() => addProduct(cart._id, item._id)}
+                 {token ? (    <button   onClick={() => addProduct(cart._id, item._id)}
               className="bg-black w-[38vw] rounded-[10px] md:rounded-[23px] md:w-[20vw] p-2 h-[7vh] lg:w-[12vw]"
             >
               <p className="text-white">+ Add to cart</p>
-            </button>
+              </button>
+                  
+                ) : (    <button
+              className="bg-black w-[38vw] rounded-[10px] md:rounded-[23px] md:w-[20vw] p-2 h-[7vh] lg:w-[12vw]"
+            >
+              <p className="text-white">Register please</p>
+                </button>  
+                )}
           </div>
         </div>
+  
       ))}
+
     </>
   );
 }
