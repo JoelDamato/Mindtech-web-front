@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import CardStore from "../components/CardStore";
 import useStore from "../store/store";
 
 export default function Cart() {
-  const { allProducts, getAllProducts } = useStore();
+  const { allProducts, getAllProducts,setCart,cart,user } = useStore();
+  
 
-  const [cart, setCart] = useState();
+
 
   useEffect(() => {
     if (!allProducts?.length) {
@@ -14,11 +14,12 @@ export default function Cart() {
     }
   }, []);
 
-  const viewCart = (email) => {
+  const viewCart = () => {
     axios
-      .get(`http://localhost:3000/carts/one?one=${email}`)
+      .get(`http://localhost:3000/carts/one?one=${user?.email}`)
       .then((res) => {
         setCart(res.data.cart);
+
       })
       .catch((error) => {
         console.log(error);
@@ -32,7 +33,8 @@ export default function Cart() {
       )
       .then((res) => {
         setCart(res.data.cart);
-        viewCart("joakin@mt.com");
+        viewCart();
+
       })
       .catch((error) => {
         console.log(error);
@@ -46,7 +48,8 @@ export default function Cart() {
       )
       .then((res) => {
         setCart(res.data.cart);
-        viewCart("joakin@mt.com");
+        viewCart();
+
       })
       .catch((error) => {
         console.log(error);
@@ -60,7 +63,8 @@ export default function Cart() {
       )
       .then((res) => {
         setCart(res.data.cart);
-        viewCart("joakin@mt.com");
+        viewCart();
+        setCartLength(res.data.cart?.products.length);
       })
       .catch((error) => {
         console.log(error);
@@ -72,7 +76,8 @@ export default function Cart() {
       .put(`http://localhost:3000/carts/clearcart?cartID=${cartID}`)
       .then((res) => {
         setCart(res.data.cart);
-        viewCart("joakin@mt.com");
+        viewCart();
+        setCartLength(res.data.cart?.products.length);
       })
       .catch((error) => {
         console.log(error);
@@ -80,29 +85,33 @@ export default function Cart() {
   };
 
   useEffect(() => {
-    viewCart("joakin@mt.com"); // Pasar el correo como parÃ¡metro
+    viewCart(); // Pasar el correo como parÃ¡metro
   }, []);
 
-  console.log(cart?.products);
+  console.log(user);
 
   return (
+    
     <div>
       <div className="drawer drawer-end">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
+   
+
           {/* Page content here */}
           <label
             onClick={() => viewCart("joakin@mt.com")}
             htmlFor="my-drawer-4"
             className="drawer-button"
           >
+        
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
               viewBox="0 0 24 24"
               stroke-width="1.5"
               stroke="currentColor"
-              className="w-6 h-6  sm:w-4 sm:h-4 md:w-6 md:h-6 hover:border-b-[1px] hover:border-white z-index-1"
+              className="w-6 h-6  sm:w-4 sm:h-4 md:w-6 md:h-6 hover:border-b-[1px] hover:border-white "
             >
               <path
                 strokeLinecap="round"
@@ -111,10 +120,11 @@ export default function Cart() {
               ></path>
             </svg>
           </label>
+          
         </div>
         <div className={`drawer-side open`}>
           <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
-          <div className="flex flex-col p-4 w-80 min-h-full bg-black/90 text-base-content">
+          <div className="flex flex-col p-4 w-80 min-h-full z-10 bg-black/90 text-base-content">
             {/* Sidebar content here */}
             <h1 className="text-4xl font-bold text-center text-white mb-2">
               CART
