@@ -6,8 +6,8 @@ import useStore from "../store/store";
 export default function CardStore({ allProducts }) {
   const { cart, setCart, favorites, handleFavorite, removeFavorite } =
     useStore();
-  console.log(favorites);
-
+    console.log(favorites);
+    console.log(cart)
   const navigate = useNavigate();
   const goDetails = (id) => {
     navigate("/details/" + id);

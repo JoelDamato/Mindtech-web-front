@@ -47,13 +47,6 @@ const useStore = create((set) => ({
       console.error("Error fetching token:", error);
     }
   },
-  cartItems: [],
-  setCartItems: (items) => set({ cartItems: items }),
-  removeCartItem: (productId) => {
-    set((state) => ({
-      cartItems: state.cartItems.filter((item) => item._id !== productId),
-    }));
-  },
   selectCheckboxes: [],
   setSelectCheckboxes: (checkboxes) =>
     set((state) => ({
@@ -84,10 +77,8 @@ const useStore = create((set) => ({
       throw new Error(error.message);
     }
   },
-
   cart: undefined,
   setCart: (parametro) => set({ cart: parametro }),
-
   favorites : [],
   handleFavorite: (itemId, itemName) => {
     set((state) => {
