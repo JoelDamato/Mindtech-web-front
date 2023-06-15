@@ -203,27 +203,7 @@ console.log(favorite)
                       />
                     </div>
                     <div className="w-full h-[20vh] border border-[#727272a8] flex items-center flex-col justify-around">
-                      <p>Price:</p>
-                      <input
-                        className="focus:outline-none w-[30vw] h-[8vh] bg-white border border-[#727272a8] p-2 "
-                        type="number"
-                        value={minPrice}
-                        onChange={handleMinPriceChange}
-                        placeholder="$Min"
-                      />
-                      <input
-                        className="focus:outline-none w-[30vw] h-[8vh] bg-white border border-[#727272a8] p-2 "
-                        type="number"
-                        value={maxPrice}
-                        onChange={handleMaxPriceChange}
-                        placeholder="$Max"
-                      />
-                    </div>
-                  </div>
-                </>
-              )}
-            </div>
-            <Select
+                    <Select
               className="w-[45vw] h-[10vh] border flex justify-evenly items-center"
               onChange={handleFilterChange}
               options={filterOptions}
@@ -239,6 +219,30 @@ console.log(favorite)
                 ), // Envuelve todo el contenido en un div interactivo
               }}
             />
+                      
+                      <p>Price:</p>
+                      <input
+                        className="focus:outline-none w-[30vw] h-[8vh] bg-white border border-[#727272a8] p-2 "
+                        type="number"
+                        value={minPrice}
+                        onChange={handleMinPriceChange}
+                        placeholder="$Min"
+                      />
+                      <input
+                        className="focus:outline-none w-[30vw] h-[8vh] bg-white border border-[#727272a8] p-2 "
+                        type="number"
+                        value={maxPrice}
+                        onChange={handleMaxPriceChange}
+                        placeholder="$Max"
+                      />
+  
+                    </div>
+
+                  </div>
+                </>
+              )}
+            </div>
+            
           </div>
           <div className=" flex bg-[#9797974e] text-[#000000b9] items-center rounded-[15px] justify-evenly">
             <input
@@ -261,7 +265,7 @@ console.log(favorite)
         <div className="p-4 fixed text-[#00000083] sm:w-[30%] md:w-[25%] lg:w-[20%] xl:w-[18%] sm:h-full overflow-y-auto">
           <div className="flex flex-col items-center">
             <p className="font-medium">Filters:</p>
-            <div className="w-full min-h-[10vh]  flex flex-col justify-around">
+            <div className="w-full min-h-[8vh]  flex flex-col justify-around">
               <Select
                 options={categories?.map((category) => ({
                   value: category._id,
@@ -273,7 +277,7 @@ console.log(favorite)
                 components={animatedComponents}
               />
             </div>
-            <div className="w-full min-h-[10vh]  flex flex-col justify-around">
+            <div className="w-full min-h-[8vh]  flex flex-col justify-around">
               <Select
                 options={brands?.map((brand) => ({
                   value: brand._id,
@@ -285,12 +289,23 @@ console.log(favorite)
                 components={animatedComponents}
               />
             </div>
-            <div className="w-full h-[20vh] flex flex-col items-center justify-center mb-4">
-              <p className="font-medium mb-4">Price:</p>
+            <div className="w-full h-[30vh] flex flex-col items-center justify-center mb-4">
+            <div className="mt-[18vh]">
+            <Select
+                options={filterOptions}
+                onChange={handleFilterChange}
+                value={selectedFilter}
+                placeholder="Sort by:"
+                components={animatedComponents}
+              />
+              </div>
+
+              <p className="font-medium mt-5 mb-4">Price:</p>
+
               <div className="w-full flex justify-between items-center">
-                <div className="flex flex-col">
+                <div className="flex flex-col h-[30vh]">
                   <input
-                    className="focus:outline-none w-[12vw] md:w-[10vw] lg:w-[8vw] h-[5vh] rounded-[5px] bg-white border border-[#727272a8]  mb-2"
+                    className="focus:outline-none w-[12vw] md:w-[10vw] lg:w-[8vw] h-[5vh] rounded-[5px] bg-white border border-[#727272a8] p-2  mb-2"
                     type="number"
                     value={minPrice}
                     onChange={handleMinPriceChange}
@@ -298,14 +313,15 @@ console.log(favorite)
                   />
                   {minPrice && (
                     <button
-                      className="text-red-600"
+                    className="text-white border-2 bg-red-600 p-1 rounded-lg"
                       onClick={() => setMinPrice("")}
                     >
                       Clear
                     </button>
                   )}
                 </div>{" "}
-                <div>
+                <div className="flex flex-col h-[30vh]">
+
                   <input
                     className="focus:outline-none w-[12vw] md:w-[10vw] lg:w-[8vw] h-[5vh] rounded-[5px] bg-white border border-[#727272a8] p-2 mb-2"
                     type="number"
@@ -315,7 +331,7 @@ console.log(favorite)
                   />
                   {maxPrice && (
                     <button
-                      className="text-red-600"
+                      className="text-white border-2 bg-red-600 p-1 rounded-lg"
                       onClick={() => setMaxPrice("")}
                     >
                       Clear
@@ -330,19 +346,10 @@ console.log(favorite)
         <div className="sm:w-[70%] md:w-[75%] lg:w-[80%] xl:w-[82%] sm:h-full flex flex-col  ">
           <div className="w-full h-[10vh]  flex"></div>
           <div className="w-full h-[10vh] bg-[#ececec] pr-[30vw] md:pr-[20vw] lg:pr-[15vw] flex justify-around items-center fixed">
-            <div className="flex items-center justify-evenly  w-[30vw] h-[6vh] rounded-[15px]">
-              <Select
-                options={filterOptions}
-                onChange={handleFilterChange}
-                value={selectedFilter}
-                placeholder="Sort by:"
-                components={animatedComponents}
-              />
-            </div>
 
-            <div className="flex items-center justify-evenly border border-blac  w-[20vw] h-[6vh] rounded-[15px]  text-[#00000083] bg-[#9797974e] ">
+            <div className="z-10 flex items-center justify-evenly border border-blac  w-[60vw] h-[6vh] rounded-[15px]  text-[#00000083] bg-[#9797974e] ">
               <input
-                className="bg-transparent p-2 placeholder:text-[#00000083]  w-[15vw] h-[6vh] rounded-[15px] focus:outline-none"
+                className="bg-transparent p-2 placeholder:text-[#00000083]  w-[45vw] h-[6vh] rounded-[15px] focus:outline-none"
                 type="search"
                 value={searchTerm}
                 onChange={handleSearchChange}
@@ -354,7 +361,7 @@ console.log(favorite)
                 viewBox="0 0 24 24"
                 strokeWidth="1.5"
                 stroke="currentColor"
-                className="w-6  h-6"
+                className=" w-6  h-6"
               >
                 <path
                   strokeLinecap="round"
