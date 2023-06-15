@@ -68,14 +68,20 @@ export default function NavBar() {
 
           <div className="hover:cursor-pointer mob:flex-col   flex justify-evenly sm:items-center sm:ml-2 w-[90px]    ">
           <div className="mr-[-50px] mt-[-20px] z-1">
-          {cart?.products?.length?(
+
+          {cart?.products?.length && token ?(
+
                 <p className="z-50 flex justify-center items-center text-[1.5vh]  bg-red-600 rounded-full h-[15px] w-[15px]">
                   {cart?.products?.length}
                 </p>
               ):(null) }
               </div>
               <div className="z-50">
+
+            {token && <Cart />}
+
             {<Cart />}
+
             </div>
             
             {token && <Account />}
