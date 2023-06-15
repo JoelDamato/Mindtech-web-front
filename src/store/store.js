@@ -106,7 +106,16 @@ const useStore = create((set) => ({
       favorites: state.favorites.filter((fav) => fav.id !== id),
     }));
   },
-
+  formatPrice: (price) => {
+    if (typeof price === "number") {
+      return price.toLocaleString("en-US", {
+        style: "currency",
+        currency: "USD",
+      });
+    } else {
+      return "";
+    }
+  },
 }));
 
 export default useStore;

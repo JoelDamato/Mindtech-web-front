@@ -14,7 +14,9 @@ export default function Card({favorites}) {
        </div>
        <div className='h-[40%] bg-black  rounded-b-[23px] flex flex-col justify-evenly items-center ' >
         <p  className='text-white font-montserrat tracking-[2px] text-[10px] md:text-[12px] text-center '>{item.name}</p>
-        <button className='bg-white w-[130px] h-[40px] rounded-[23px]' >
+        <button               
+        onClick={() => addProduct(cart._id, item._id)}
+        className='bg-white w-[130px] h-[40px] rounded-[23px]' >
           <p className='text-[12px] font-semibold font-montserrat tracking-[2px]'>+ Add to cart</p>
         </button>
        </div>
