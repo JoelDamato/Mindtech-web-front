@@ -4,10 +4,12 @@ import axios from "axios";
 import useStore from "../store/store";
 
 export default function CardStore({ allProducts }) {
+
   const { cart, setCart, favorites, handleFavorite, removeFavorite,formatPrice,token } =
     useStore();
     console.log(favorites);
     console.log(cart)
+
   const navigate = useNavigate();
   const goDetails = (id) => {
     navigate("/details/" + id);
