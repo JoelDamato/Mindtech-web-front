@@ -74,7 +74,7 @@ export default function NavBar() {
                 </p>
               ):(null) }
               </div>
-              <div className="z-50">
+              <div className="z-30">
             {token && <Cart />}
             </div>
             
