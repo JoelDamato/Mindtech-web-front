@@ -5,11 +5,15 @@ import useStore from "../store/store";
 import { Link } from "react-router-dom";
 
 export default function CardStore({ allProducts }) {
-  const { cart, setCart, favorites, handleFavorite, removeFavorite,formatPrice,token } =
+ 
+  const { cart, setCart, favorites, handleFavorite, removeFavorite,formatPrice,token , user} =
     useStore();
     console.log(favorites);
     console.log(cart)
+    const navigate = useNavigate();
+  const goDetails = (id) => {
     navigate("/details/" + id);
+  };
 
   const viewCart = () => {
     axios
