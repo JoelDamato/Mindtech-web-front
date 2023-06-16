@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
+import { Link } from "react-router-dom";
 import apiUrl from "../../api.js";
 
 import useStore from "../store/store";
@@ -283,9 +284,11 @@ export default function Index() {
               alt=""
             />
           </div>
-          <button className="bg-black w-[50vw] h-[5vh] rounded-[8px] sm:w-[40%] sm:h-[8vh]">
-            REGISTER NOW!
-          </button>
+          <Link to="/auth-form" className="bg-black w-[50vw] h-[5vh] rounded-[8px] sm:w-[40%] sm:h-[8vh] flex justify-center">
+            <button className="bg-black w-[50vw] h-[5vh] rounded-[8px] sm:w-[40%] sm:h-[8vh]">
+              <p>SIGN IN</p>
+            </button>
+          </Link>
           <p className="text-black flex font-montserrat font-semibold justify-evenly w-[100px] sm:w-[30%] ">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -313,7 +316,7 @@ export default function Index() {
           <div className="border-[2px] rounded-[45px] border-black w-[280px] h-[280px] ">
             <img
               className="object-contain p-10 "
-              src="https://i.postimg.cc/LsMqBJXJ/qr.png"
+              src="https://i.postimg.cc/263VMZBd/qrcode-generado.png"
               alt=""
             />
           </div>
