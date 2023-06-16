@@ -9,10 +9,7 @@ export default function CardStore({ allProducts }) {
     useStore();
     console.log(favorites);
     console.log(cart)
-  const navigate = useNavigate();
-  const goDetails = (id) => {
     navigate("/details/" + id);
-  };
 
   const viewCart = (email) => {
     axios

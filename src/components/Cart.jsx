@@ -3,7 +3,9 @@ import axios from "axios";
 import useStore from "../store/store";
 import { Link } from "react-router-dom";
 export default function Cart() {
+
   const { allProducts, getAllProducts,setCart,cart,user,formatPrice } = useStore();
+
   useEffect(() => {
     if (!allProducts?.length) {
       getAllProducts();
