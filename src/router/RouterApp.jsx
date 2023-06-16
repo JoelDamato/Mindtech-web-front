@@ -32,6 +32,7 @@ export default function RouterApp() {
     <Routes>
       <Route element={<App />}>
         <Route path="/" element={<Index />} />
+      <Route path="/checkout" element={<Checkout/>}/>
         <Route path="/details/:id" element={<Details />} />
       </Route>
       <Route path="/auth-form" element={<AuthForm />} />
@@ -42,7 +43,6 @@ export default function RouterApp() {
         }
       />
       <Route path="/admin"  element={<Admin useFavoritesStore={useFavoritesStore} allProducts={allProducts} getAllProducts={getAllProducts} deleteProducts={deleteProducts} createProduct={createProduct} />} />
-      <Route path="/checkout" element={<Checkout/>}/>
       <Route
         path="/demostration"
         element={

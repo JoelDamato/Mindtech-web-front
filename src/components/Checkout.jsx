@@ -1,119 +1,109 @@
-import React, {useState} from 'react'
-
-export default function Checkout () {
-    const [name, setName] = useState("");
-    const [address, setAddress] = useState("");
-    const [email, setEmail] = useState("");
-    const [phone, setPhone] = useState("");
-    const [code, setCode] = useState("");
+import React from 'react';
+import { initMercadoPago, Wallet } from '@mercadopago/sdk-react';
+import { useState } from 'react';
+import axios from 'axios'
+import useStore from "../store/store";
 
 
-    const dataPayment = {
-     name,
-     address,
-     email,
-     phone,
-     code
-}
-console.log(dataPayment)
+export default function Index() {
 
+  initMercadoPago("TEST-94fb06b1-a38f-4f4e-b718-bb299403a6e1");
+  const [name, setName] = useState("");
+  const [address, setAddress] = useState("");
+  const [email, setEmail] = useState("");
+  const [dni, setDni] = useState("");
+  const [phone, setPhone] = useState("");
+  const [code, setCode] = useState("");
+  const [paymentMethod, setPayment] = useState("");
+  const [showData, setShowData] = useState(false);
+  const [preferenceId, setPreferenceId] = useState(null);
+  const [click, setClick] = useState(false)
+  const [cancelPayment, setCancelPayment] = useState(false)
+  const {cart,formatPrice} = useStore();
+  console.log(cart?.products) 
+
+  const donate = () => {
+    setClick(!click)
+    setCancelPayment(!cancelPayment)
+  }
+  const cancel = () => {
+    setClick(false)
+    setCancelPayment(false)
+    setPreferenceId(null); // setea el preferenceId en null para limpiarlo y volver a generar otro pago
+  }
+
+  const handlePayment = async (amount) => {
+    try {
+      const response = await axios.post('http://localhost:3000/payments', {
+        unit_price: amount,
+      });
+
+      const preferenceId = response.data.preferenceId;
+      setPreferenceId(preferenceId);
+
+    } catch (error) {
+      console.error(error);
+    }
+  };
+
+  const renderPaymentButton = () => {
+    if (preferenceId) {
+      return (
+        <div className="text-white flex flex-col justify-center absolute p-10 rounded top-50% bg-[#dddddd] z-20 h-[20vh] w-[30vw] animate__animated animate__fadeIn  ">
+          <Wallet initialization={{ preferenceId }} />
+          <button onClick={cancel} className="text-black">Cancel payment ❌</button>
+        </div>
+      );
+    }
+
+    return null; // No muestra el div si no se genera el preferenceId
+  };
+
+  const total = cart?.products.reduce((accumulator, product) => {
+    return accumulator + Number(product.subtotal);
+  }, 0);
+console.log(total)
   return (
-    <div className="flex flex-col  justify-evenly items-center w-full min-h-[100vh] bg-black ">
-        <form
-                    className="w-[90%] rounded-[15px] bg-white p-2 min-h-[50vh] mt-4 flex flex-col items-center pl-2 justify-around bg-[#0000000e] text-black   sm:w-[70%]  md:w-[50%] "
-                    action=""
-                  >
-                    <p className='text-black'>Payment details:</p>
-                    <input
-                      placeholder="Name"
-                      className="h-[5vh] w-[95%] bg-[#d6d6d6] rounded-[5px] placeholder:pl-2"
-                      type="text"
-                      onChange={(e) => setName(e.target.value)}
-                    />
-                    <input
-                      placeholder="Address"
-                      className="h-[5vh] w-[95%] bg-[#d6d6d6] rounded-[5px] placeholder:pl-2"
-                      type="text"
-                      onChange={(e) => setAddress(e.target.value)}
-                    />
-                    <input
-                      placeholder="Email"
-                      className="h-[5vh] w-[95%] bg-[#d6d6d6] rounded-[5px] placeholder:pl-2"
-                      type="text"
-                      onChange={(e) => setEmail(e.target.value)}
-                    />
-                    <input
-                      placeholder="Phone Number"
-                      className="h-[5vh] w-[95%] bg-[#d6d6d6] rounded-[5px] placeholder:pl-2"
-                      type="text"
-                      onChange={(e) => setPhone(e.target.value)}
-                    />
-                    
-                    <input
-                      placeholder="Zip code"
-                      className="h-[5vh] w-[95%] bg-[#d6d6d6] rounded-[5px] placeholder:pl-2"
-                      type="text"
-                      onChange={(e) => setCode(e.target.value)}
-                    />
-                    <select className='w-[95%] h-[5vh] pl-2 text-[#4c4c4c66] font-medium rounded-[5px] bg-[#9797974e]  ' name="" id="">
-                        <option value="">Payment method</option>
-                        <option value="">Cash (transfer or deposit)</option>
-                        <option value="">Mercado Pago</option>
-                    </select>
-                    <button>Send</button>
-                  </form>
 
-          <div className='bg-white rounded-[15px] font-montserrat items-center justify-evenly p-2 flex flex-col w-[90%] min-h-[90vh]'>
-              <h1 className='font-montserrat font-bold text-[#000000ac]'>MINDTECH INC.</h1>
-              <div className='w-full h-[20vh] items-center justify-between  flex'>
-                  <p className='text-left w-[60%] h-full border border-[#000]'>
-                      CUIT: 20-34211743-0 <br />
-                      Technology products store <br />
-                      Nº: 0003- {Math.floor(Math.random() * 900) + 100}
-                  </p>
+    <>
+      
+      <div className="flex flex-col  justify-center items-center w-full min-h-[100vh] bg-[#000000a9] ">
+        <p className='text-[16px] font-bold tracking-[1px]  text-white'>CHECKOUT PAYMENT</p>
+        <div className='w-full flex flex-col md:flex-row items-center  justify-evenly'>
+          <div className="w-[90%] m-2 rounded-[15px] bg-[#313742a0] p-2 min-h-[50vh] mt-4 flex flex-col items-center pl-2 justify-around  text-black   sm:w-[70%]  md:w-[60%]  md:h-[60vh] ">
+            
+            <h2 className='md:text-[26px] text-white font-bold'>Purchase details</h2>
+            <table className='w-[100%] rounded-[2px] md:p-10 flex flex-col border text-black border-black min-h-[10vh] bg-white'>
+              <tr className='text-left text-[10px] w-full flex'>
+                <td className='border p-1 w-[20%] text-left md:h-[6vh] md:text-[20px] border-white bg-[#66656559]'>Unit</td>
+                <td className='border p-1 w-[15%] text-left md:h-[6vh] md:text-[20px] border-white bg-[#66656559]'>Price</td>
+                <td className='border p-1 w-[45%] text-left md:h-[6vh] md:text-[20px] border-white bg-[#66656559]'>Product Name</td>
+                <td className='border p-1 w-[20%] text-left md:h-[6vh] md:text-[20px] border-white bg-[#66656559]'>Amount:</td>
+              </tr>
+              {cart?.products.map((item) => (
+                <tr className='text-left text-[10px] w-full flex' key={item.id}>
+                  <td className='border p-1 w-[20%] md:h-[4vh] md:text-[12px] text-left border-white bg-[#66656559]'>{item.quantity}</td>
+                  <td className='border p-1 w-[15%] md:h-[4vh] md:text-[12px] text-left border-white bg-[#66656559]'>{formatPrice(item.price)}</td>
+                  <td className='border p-1 w-[45%] md:h-[4vh] md:text-[12px] text-left border-white bg-[#66656559]'>{item.name}</td>
+                  <td className='border p-1 w-[20%] md:h-[4vh] md:text-[12px]  border-white bg-[#66656559] text-end'>{formatPrice(item.subtotal)}</td>
+                </tr>
+              ))}
 
-                  <div className='w-[40%] h-full border border-[#000]'>
-                      <p className='text-right '>Purchase ticket
-                          -{Math.floor(Math.random() * 9000000000) + 10000000}
-                          <br />
-                          15/6/2023
-                      </p>
-                  </div>
-              </div>
-                  <div className='w-full border border-black'>
-                    <p>Name: </p>
-                    <p>Address: </p>
-                    <p>DNI: </p>
-                    <p>Payment method: </p>
-                  </div>
-              <table className='w-[100%] flex flex-col border border-black min-h-[10vh] bg-white'>
-                  <tr className='text-left text-[10px] w-full flex'>
-                      <td className='border w-[20%] text-left border-white bg-[#66656559]'>Unit</td>
-                      <td className='border w-[15%] text-left border-white bg-[#66656559]'>Price</td>
-                      <td className='border w-[45%] text-left border-white bg-[#66656559]'>Product Name</td>
-                      <td className='border w-[20%] text-left border-white bg-[#66656559]'>Amount:</td>
-                  </tr>
-                  <tr className='text-left w-full flex'>
-                      <td className='border w-[20%] h-[4vh] text-left text-[12px] border-white bg-[#66656559]'>2</td>
-                      <td className='border w-[15%] h-[4vh] text-left text-[12px] border-white bg-[#66656559]'>200</td>
-                      <td className='border w-[45%] h-[4vh] text-left text-[12px] border-white bg-[#66656559]'>Product test</td>
-                      <td className='border w-[20%] h-[4vh] text-left text-[12px] border-white bg-[#66656559]'></td>
-                  </tr>
-                  <tr className='text-left w-full flex'>
-                      <td className='border w-[20%] h-[4vh] text-left text-[12px] border-white bg-[#66656559]'>1</td>
-                      <td className='border w-[15%] h-[4vh] text-left text-[12px] border-white bg-[#66656559]'>600</td>
-                      <td className='border w-[45%] h-[4vh] text-left text-[12px] border-white bg-[#66656559]'>Product test 2</td>
-                      <td className='border w-[20%] h-[4vh] text-left text-[12px] border-white bg-[#66656559]'></td>
-                  </tr>
-                  <tr className='text-left w-full flex'>
-                      <td className='border w-[20%] h-[4vh] text-left text-[12px] border-white bg-[#66656559]'>3</td>
-                      <td className='border w-[15%] h-[4vh] text-left text-[12px] border-white bg-[#66656559]'>300</td>
-                      <td className='border w-[45%] h-[4vh] text-left text-[12px] border-white bg-[#66656559]'>Product test 3</td>
-                      <td className='border w-[20%] h-[4vh] text-left text-[12px] border-white bg-[#66656559]'></td>
-                  </tr>
-              </table>
+            <tr className='text-left w-full justify-between flex'>
+              <td className='w-[80%] pr-1 bg-[#adadad59] text-end'>Total:</td>
+              <td className='border w-[20%]  h-[4vh] text-end py-2 text-[12px] p-1 border-white bg-[#adadad59]'><p>{formatPrice(cart?.total)}</p></td>
+            </tr>
+            </table>
+
+            <button className='w-[30vw] lg:w-[10vw] h-[5vh] bg-[#000] text-white font-bold tracking-[5px] rounded-[10px]  ' onClick={() => handlePayment(cart?.total)}   >PAY</button>
+
           </div>
-                  
-    </div>
+
+
+        </div>
+        {renderPaymentButton()}
+      </div>
+    </>
   )
 }
+
