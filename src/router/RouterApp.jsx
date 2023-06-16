@@ -1,6 +1,5 @@
 import { Routes, Route } from "react-router-dom";
 import App from "../App";
-import Demostration from "../pages/Demostration";
 import Index from "../pages/Index";
 import AuthForm from "../pages/Auth";
 import Details from "../pages/details";
@@ -15,15 +14,6 @@ export default function RouterApp() {
   const {
     allProducts,
     getAllProducts,
-    oneProduct,
-    getOneProduct,
-    user,
-    getUser,
-    token,
-    login,
-    logout,
-    selectCheckboxes,
-    setSelectCheckboxes,
     deleteProducts,
     createProduct,
     useFavoritesStore,
@@ -39,7 +29,6 @@ export default function RouterApp() {
         <Route path="/pending" element={<Pending />} />
       </Route>
       <Route path="/auth-form" element={<AuthForm />} />
-     
       <Route
         path="/store"
         element={
@@ -55,22 +44,6 @@ export default function RouterApp() {
             getAllProducts={getAllProducts}
             deleteProducts={deleteProducts}
             createProduct={createProduct}
-          />
-        }
-      />
-      <Route
-        path="/demostration"
-        element={
-          <Demostration
-            allProducts={allProducts}
-            getAllProducts={getAllProducts}
-            oneProduct={oneProduct}
-            getOneProduct={getOneProduct}
-            user={user}
-            getUser={getUser}
-            token={token}
-            login={login}
-            logout={logout}
           />
         }
       />

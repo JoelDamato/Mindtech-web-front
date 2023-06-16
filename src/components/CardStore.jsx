@@ -1,23 +1,30 @@
-import React, { useEffect,useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useStore from "../store/store";
 import { Link } from "react-router-dom";
 
 export default function CardStore({ allProducts }) {
- 
-  const { cart, setCart, favorites, handleFavorite, removeFavorite,formatPrice,token , user} =
-    useStore();
-    console.log(favorites);
-    console.log(cart)
-    const navigate = useNavigate();
+  const {
+    cart,
+    setCart,
+    favorites,
+    handleFavorite,
+    removeFavorite,
+    formatPrice,
+    token,
+    user,
+  } = useStore();
+  console.log(favorites);
+  console.log(cart);
+  const navigate = useNavigate();
   const goDetails = (id) => {
     navigate("/details/" + id);
   };
 
   const viewCart = () => {
     axios
-      .get(`http://localhost:3000/carts/one?one=${user?.email}`)
+      .get(apiUrl + `carts/one?one=${user?.email}`)
       .then((res) => {
         setCart(res.data.cart);
       })
@@ -28,9 +35,7 @@ export default function CardStore({ allProducts }) {
 
   const addProduct = (cartID, productID) => {
     axios
-      .post(
-        `http://localhost:3000/carts/addProduct?cartID=${cartID}&productID=${productID}`
-      )
+      .post(apiUrl + `carts/addProduct?cartID=${cartID}&productID=${productID}`)
       .then((res) => {
         setCart(res.data.cart);
         viewCart();
@@ -46,11 +51,9 @@ export default function CardStore({ allProducts }) {
 
   const [modalOpen, setModalOpen] = useState(false);
 
-
   const openModal = () => {
     setModalOpen(true);
   };
-
 
   const closeModal = () => {
     setModalOpen(false);
@@ -77,13 +80,17 @@ export default function CardStore({ allProducts }) {
             </p>
             <p className="py-2">{formatPrice(item.price)}</p>
 
-            <label className="z-0 swap swap-flip text-9xl " style={{ position: 'relative', zIndex: '0' }}>
+            <label
+              className="z-0 swap swap-flip text-9xl "
+              style={{ position: "relative", zIndex: "0" }}
+            >
               {/* this hidden checkbox controls the state */}
               <input type="checkbox" />
 
               <div
                 onClick={() => handleFavorite(item._id, item.name)}
-                className="z-0 swap-off " style={{ position: 'relative', zIndex: '0' }}
+                className="z-0 swap-off "
+                style={{ position: "relative", zIndex: "0" }}
               >
                 <svg
                   viewBox="0 0 24 24"
@@ -107,7 +114,11 @@ export default function CardStore({ allProducts }) {
                   </g>
                 </svg>
               </div>
-              <div onClick={() => removeFavorite(item._id)} className="swap-on" style={{ position: 'relative', zIndex: '0' }}>
+              <div
+                onClick={() => removeFavorite(item._id)}
+                className="swap-on"
+                style={{ position: "relative", zIndex: "0" }}
+              >
                 <svg
                   className="z-0 w-[30px] h-[30px]"
                   width="64px"
@@ -132,48 +143,53 @@ export default function CardStore({ allProducts }) {
                 </svg>
               </div>
             </label>
-              {token ? (    <button   onClick={() => addProduct(cart._id, item._id)}
-              className="bg-black w-[38vw] rounded-[10px] md:rounded-[23px] md:w-[20vw] p-2 h-[7vh] lg:w-[12vw]"
-            >
-              <p className="text-white">+ Add to cart</p>
+            {token ? (
+              <button
+                onClick={() => addProduct(cart._id, item._id)}
+                className="bg-black w-[38vw] rounded-[10px] md:rounded-[23px] md:w-[20vw] p-2 h-[7vh] lg:w-[12vw]"
+              >
+                <p className="text-white">+ Add to cart</p>
               </button>
-                  
-                ) : (    
-                
-                <button onClick={openModal}
-              className="bg-black w-[38vw] rounded-[10px] md:rounded-[23px] md:w-[20vw] p-2 h-[7vh] lg:w-[12vw]"
-            >
-              <p className="text-white">+ Add to cart</p>
-                </button>  
-                )}
+            ) : (
+              <button
+                onClick={openModal}
+                className="bg-black w-[38vw] rounded-[10px] md:rounded-[23px] md:w-[20vw] p-2 h-[7vh] lg:w-[12vw]"
+              >
+                <p className="text-white">+ Add to cart</p>
+              </button>
+            )}
             {modalOpen && (
-        <div className="fixed inset-0 flex items-center justify-center z-50 mob:[80vw] ">
-          <div className="bg-white w-[30%] mob:w-[80%] shadow-md rounded-lg h-[22%]  flex flex-col justify-evenly items-center">
-            <div className="p-4 w-[80%] flex flex-col items-center">
-              {/* Contenido del modal */}
+              <div className="fixed inset-0 flex items-center justify-center z-50 mob:[80vw] ">
+                <div className="bg-white w-[30%] mob:w-[80%] shadow-md rounded-lg h-[22%]  flex flex-col justify-evenly items-center">
+                  <div className="p-4 w-[80%] flex flex-col items-center">
+                    {/* Contenido del modal */}
 
-              <p className="mb-4 ">You need a account for buy.</p>
+                    <p className="mb-4 ">You need a account for buy.</p>
 
-              {/* Botón para cerrar el modal */}
-            <div className="flex justify-evenly w-[80%]">
-              <Link to="/auth-form">
-              <button onClick={closeModal} className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded">
-              Sign In
-              </button></Link>
-              <button onClick={closeModal} className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded">
-               Close
-              </button>
+                    {/* Botón para cerrar el modal */}
+                    <div className="flex justify-evenly w-[80%]">
+                      <Link to="/auth-form">
+                        <button
+                          onClick={closeModal}
+                          className="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+                        >
+                          Sign In
+                        </button>
+                      </Link>
+                      <button
+                        onClick={closeModal}
+                        className="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
+                      >
+                        Close
+                      </button>
+                    </div>
+                  </div>
+                </div>
               </div>
-            </div>
+            )}
           </div>
         </div>
-      )}
-          </div>
-          
-        </div>
-  
       ))}
-
     </>
   );
 }
