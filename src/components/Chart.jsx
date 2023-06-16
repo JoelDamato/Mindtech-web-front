@@ -30,7 +30,7 @@ const BarChart = () => {
 
   useEffect(() => {
     axios
-      .get("http://localhost:3000/products/all")
+      .get(apiUrl + "products/all")
       .then((response) => {
         const data = response.data.products;
         setRating(data);

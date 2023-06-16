@@ -32,11 +32,9 @@ export default function AuthForm() {
     axios
       .post(apiUrl + "users/login", data)
       .then((res) => {
-        console.log(res.data.message);
         login(res.data.token);
         localStorage.setItem("token", res.data.token);
         getUser(res.data.user.email);
-        console.log(res.data.user.id);
         axios.post(
           apiUrl + "carts/createCartOnLogin?userID=" + res.data.user.id
         );
@@ -69,7 +67,6 @@ export default function AuthForm() {
     axios
       .post(apiUrl + "users/register", data)
       .then((res) => {
-        console.log(res.data.message);
         handleClick();
         navigate("/auth-form");
         axios.post(apiUrl + "users/send-verification-email", {
@@ -90,7 +87,6 @@ export default function AuthForm() {
 
   function handleClick() {
     setPages(!pages);
-    console.log(pages);
   }
   return (
     <>
@@ -145,15 +141,6 @@ export default function AuthForm() {
                       />
                     </div>
                   </legend>
-                  <button className="bg-white rounded-[20px] w-[80%] sm:h-[8vh] sm:w-[55%] h-[10vh] tracking-[3px] text-black text-[2vh] font-bold flex items-center pl-5 gap-5 sm:mt-[6vh]">
-                    {" "}
-                    <img
-                      src="https://rotulosmatesanz.com/wp-content/uploads/2017/09/2000px-Google_G_Logo.svg_.png"
-                      className="w-[35px] h-[35px] sm:mr-5 "
-                      alt=""
-                    />{" "}
-                    SIGN IN WITH GOOGLE
-                  </button>
                   <button
                     className="bg-black rounded-[20px] w-[80%] sm:h-[8vh] sm:w-[55%] h-[10vh] tracking-[8px] text-[3vh]"
                     onClick={sendLogin}
@@ -256,15 +243,6 @@ export default function AuthForm() {
                       />
                     </div>
                   </legend>
-                  <button className="bg-white rounded-[20px] w-[80%] sm:h-[8vh] sm:w-[55%] h-[10vh] tracking-[3px] text-black text-[2vh] font-bold flex items-center pl-5 gap-5 sm:mt-[2vh]">
-                    {" "}
-                    <img
-                      src="https://rotulosmatesanz.com/wp-content/uploads/2017/09/2000px-Google_G_Logo.svg_.png"
-                      className="w-[35px] h-[35px] sm:mr-5 "
-                      alt=""
-                    />{" "}
-                    SIGN IN WITH GOOGLE
-                  </button>
                   <button
                     className="bg-black rounded-[20px] w-[80%] sm:h-[8vh] sm:w-[55%] h-[10vh] tracking-[8px] text-[3vh]"
                     onClick={sendRegister}

@@ -2,9 +2,11 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import useStore from "../store/store";
 import { Link } from "react-router-dom";
-export default function Cart() {
+import apiUrl from "../../api";
 
-  const { allProducts, getAllProducts,setCart,cart,user,formatPrice } = useStore();
+export default function Cart() {
+  const { allProducts, getAllProducts, setCart, cart, user, formatPrice } =
+    useStore();
 
   useEffect(() => {
     if (!allProducts?.length) {
@@ -14,10 +16,9 @@ export default function Cart() {
 
   const viewCart = () => {
     axios
-      .get(`http://localhost:3000/carts/one?one=${user?.email}`)
+      .get(apiUrl + `carts/one?one=${user?.email}`)
       .then((res) => {
         setCart(res.data.cart);
-
       })
       .catch((error) => {
         console.log(error);
@@ -26,13 +27,10 @@ export default function Cart() {
 
   const addProduct = (cartID, productID) => {
     axios
-      .post(
-        `http://localhost:3000/carts/addProduct?cartID=${cartID}&productID=${productID}`
-      )
+      .post(apiUrl + `carts/addProduct?cartID=${cartID}&productID=${productID}`)
       .then((res) => {
         setCart(res.data.cart);
         viewCart();
-
       })
       .catch((error) => {
         console.log(error);
@@ -42,12 +40,11 @@ export default function Cart() {
   const delProduct = (cartID, productID) => {
     axios
       .delete(
-        `http://localhost:3000/carts/delProduct?cartID=${cartID}&productID=${productID}`
+        apiUrl + `carts/delProduct?cartID=${cartID}&productID=${productID}`
       )
       .then((res) => {
         setCart(res.data.cart);
         viewCart();
-
       })
       .catch((error) => {
         console.log(error);
@@ -57,7 +54,7 @@ export default function Cart() {
   const removeProduct = (cartID, productID) => {
     axios
       .put(
-        `http://localhost:3000/carts/removeProduct?cartID=${cartID}&productID=${productID}`
+        apiUrl + `carts/removeProduct?cartID=${cartID}&productID=${productID}`
       )
       .then((res) => {
         setCart(res.data.cart);
@@ -71,7 +68,7 @@ export default function Cart() {
 
   const clearCart = (cartID) => {
     axios
-      .put(`http://localhost:3000/carts/clearcart?cartID=${cartID}`)
+      .put(apiUrl + `carts/clearcart?cartID=${cartID}`)
       .then((res) => {
         setCart(res.data.cart);
         viewCart();
@@ -89,20 +86,16 @@ export default function Cart() {
   console.log(user);
 
   return (
-    
     <div>
       <div className="drawer drawer-end">
         <input id="my-drawer-4" type="checkbox" className="drawer-toggle" />
         <div className="drawer-content">
-   
-
           {/* Page content here */}
           <label
             onClick={() => viewCart("joakin@mt.com")}
             htmlFor="my-drawer-4"
             className="drawer-button"
           >
-        
             <svg
               xmlns="http://www.w3.org/2000/svg"
               fill="none"
@@ -118,9 +111,8 @@ export default function Cart() {
               ></path>
             </svg>
           </label>
-          
         </div>
-        <div className={`drawer-side open`}  >
+        <div className={`drawer-side open`}>
           <label htmlFor="my-drawer-4" className="drawer-overlay"></label>
           <div className="flex flex-col p-4 w-80 min-h-full z-40 bg-black/90 text-base-content">
             {/* Sidebar content here */}
@@ -148,8 +140,9 @@ export default function Cart() {
                 <div className="flex items-center">
                   <img className="w-[30%] h-[10vh]" src={item.images} alt="" />
                   <div className="flex flex-col items-center justify-center w-[70%]">
-
-                    <p className="text-black">Price:{formatPrice(item.price)}</p>
+                    <p className="text-black">
+                      Price:{formatPrice(item.price)}
+                    </p>
 
                     <div className="flex justify-center items-center">
                       <img
@@ -166,15 +159,15 @@ export default function Cart() {
                         onClick={() => addProduct(cart._id, item.product_id)}
                       />
                     </div>
-                    <p className="text-black">Subtotal:{formatPrice(item.subtotal)}</p>
+                    <p className="text-black">
+                      Subtotal:{formatPrice(item.subtotal)}
+                    </p>
                   </div>
                 </div>
               </div>
             ))}
             <div className="w-full justify-end">
-
-            <p className="text-xl font-bold text-center text-white mb-2">
-
+              <p className="text-xl font-bold text-center text-white mb-2">
                 Total:{formatPrice(cart?.total)}
               </p>
               <button
@@ -183,7 +176,10 @@ export default function Cart() {
               >
                 Clear cart
               </button>
-              <Link to='/checkout' className="btn btn-outline btn-success w-full mb-2">
+              <Link
+                to="/checkout"
+                className="btn btn-outline btn-success w-full mb-2"
+              >
                 Continue to checkout
               </Link>
             </div>

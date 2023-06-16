@@ -9,6 +9,7 @@ import Chart from "../components/Chart";
 import LineChart from "../components/LineChart";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import apiUrl from "../../api";
 
 export default function AdminPanel({ allProducts, getAllProducts }) {
   //declaracion de variables para setear estados:
@@ -108,11 +109,9 @@ export default function AdminPanel({ allProducts, getAllProducts }) {
       setQuantity(0);
       setImages(null);
       getAllProducts();
-      console.log(res, "Producto creado");
-      console.log(newProduct);
     } catch (err) {
-      console.log(err)
-    } 
+      console.log(err);
+    }
   };
 
   //funcion para mostrar los datos de un producto a editar:
@@ -162,10 +161,7 @@ export default function AdminPanel({ allProducts, getAllProducts }) {
         images: imageUrls,
       };
       axios
-        .put(
-          `http://localhost:3000/products/update/${idSelected}`,
-          updateProduct
-        )
+        .put(apiUrl + `products/update/${idSelected}`, updateProduct)
         .then(console.log("producto actualizado", updateProduct))
         .catch((error) => {
           console.log(error);
@@ -184,12 +180,10 @@ export default function AdminPanel({ allProducts, getAllProducts }) {
     deleteProducts(dataDelete) // Llama a la función deleteProducts pasando los datos
       .then(() => {
         getAllProducts();
-        console.log("borrado con exito");
       })
       .catch((err) => {
         console.log(err);
       });
-    console.log(dataDelete);
   }
 
   //funciones para renderizar pantallas de create product
@@ -238,7 +232,7 @@ export default function AdminPanel({ allProducts, getAllProducts }) {
   //axios para traer las categorias:
   useEffect(() => {
     axios
-      .get("http://localhost:3000/categories")
+      .get(apiUrl + "categories")
       .then((response) => {
         setCategories(response.data.categories);
       })
@@ -250,7 +244,7 @@ export default function AdminPanel({ allProducts, getAllProducts }) {
   //axios para traer las marcas(brand):
   useEffect(() => {
     axios
-      .get("http://localhost:3000/brands")
+      .get(apiUrl + "brands")
       .then((response) => {
         setBrands(response.data.brands);
       })
@@ -288,7 +282,6 @@ export default function AdminPanel({ allProducts, getAllProducts }) {
             {/*Div contenedor del apartado create product, el condicional maneja los estados para renderizar las vistas*/}
 
             {currentDiv === 1 && (
-              
               <form
                 onSubmit={handleSubmit}
                 className="w-[90%] p-2 min-h-[90vh] mt-4 flex flex-col items-center pl-2 justify-around bg-[#0000000e] text-black shadow-md shadow-[#000000a8] rounded-[15px] sm:w-[70%]  md:w-[50%] "
@@ -929,7 +922,7 @@ export default function AdminPanel({ allProducts, getAllProducts }) {
             <div className="w-[90%] min-h-[50vh] sm:h-[50vh] md:h-[90vh] lg:w-[80%] rounded-[15px] shadow-md shadow-black lg:h-[70vh] bg-white flex flex-col items-center justify-around">
               <div className="w-[90%] min-h-[60vh]  flex flex-col items-center ">
                 <p className="py-2 font-montserrat font-bold ">
-                Pending shipments:
+                  Pending shipments:
                 </p>
                 <table className="border flex flex-col rounded-[10px] p-4 bg-[#d6d6d681]  w-[90%] h-[50%] ">
                   {data.map((item, index) => (
@@ -938,7 +931,9 @@ export default function AdminPanel({ allProducts, getAllProducts }) {
                     </tr>
                   ))}
                 </table>
-                <p className="py-2 font-montserrat font-bold ">Deliveries made:</p>
+                <p className="py-2 font-montserrat font-bold ">
+                  Deliveries made:
+                </p>
                 <table className="border flex flex-col p-4 rounded-[10px] bg-[#d6d6d681] w-[90%] h-[50%] ">
                   {data.map((item, index) => (
                     <tr className="border m-[2px] py-2 pl-1 rounded-[4px] bg-[#d6d6d6] border-[#0000007d]">
