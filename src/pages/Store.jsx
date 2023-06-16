@@ -346,7 +346,7 @@ console.log(favorite)
 
         <div className="sm:w-[70%] md:w-[75%] lg:w-[80%] xl:w-[82%] sm:h-full flex flex-col  ">
           <div className="w-full h-[10vh]  flex"></div>
-          <div className="absolute w-full h-[10vh] bg-[#ececec] pr-[30vw] md:pr-[20vw] lg:pr-[15vw] flex justify-around items-center ">
+          <div className="absolute w-[80vw] h-[10vh] bg-[#ececec] pr-[3s0vw] md:pr-[20vw] lg:pr-[10vw] flex justify-around items-center ">
 
             <div className="flex items-center justify-evenly border border-blac  w-[50vw] h-[6vh] rounded-[15px]  text-[#00000083] bg-[#9797974e] ">
               <input
