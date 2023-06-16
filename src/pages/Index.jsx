@@ -316,8 +316,8 @@ export default function Index() {
           <div className="border-[2px] rounded-[45px] border-black w-[280px] h-[280px] ">
             <img
               className="object-contain p-10 "
-              src="https://i.postimg.cc/263VMZBd/qrcode-generado.png"
-              alt=""
+              src="https://i.postimg.cc/9Fx97Mp7/qrcode-generado.png"
+              alt="qr"
             />
           </div>
         </div>
