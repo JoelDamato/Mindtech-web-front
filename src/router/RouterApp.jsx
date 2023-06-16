@@ -34,8 +34,10 @@ export default function RouterApp() {
         <Route path="/" element={<Index />} />
       <Route path="/checkout" element={<Checkout/>}/>
         <Route path="/details/:id" element={<Details />} />
+
       </Route>
       <Route path="/auth-form" element={<AuthForm />} />
+     
       <Route
         path="/store"
         element={
