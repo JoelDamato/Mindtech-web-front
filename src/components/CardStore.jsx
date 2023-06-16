@@ -11,9 +11,9 @@ export default function CardStore({ allProducts }) {
     console.log(cart)
     navigate("/details/" + id);
 
-  const viewCart = (email) => {
+  const viewCart = () => {
     axios
-      .get(`http://localhost:3000/carts/one?one=${email}`)
+      .get(`http://localhost:3000/carts/one?one=${user?.email}`)
       .then((res) => {
         setCart(res.data.cart);
       })
@@ -29,7 +29,7 @@ export default function CardStore({ allProducts }) {
       )
       .then((res) => {
         setCart(res.data.cart);
-        viewCart("joakin@mt.com");
+        viewCart();
       })
       .catch((error) => {
         console.log(error);
@@ -37,7 +37,7 @@ export default function CardStore({ allProducts }) {
   };
 
   useEffect(() => {
-    viewCart("joakin@mt.com"); // Pasar el correo como parámetro
+    viewCart(); // Pasar el correo como parámetro
   }, []);
 
   const [modalOpen, setModalOpen] = useState(false);
