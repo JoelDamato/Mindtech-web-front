@@ -32,11 +32,9 @@ export default function AuthForm() {
     axios
       .post(apiUrl + "users/login", data)
       .then((res) => {
-        console.log(res.data.message);
         login(res.data.token);
         localStorage.setItem("token", res.data.token);
         getUser(res.data.user.email);
-        console.log(res.data.user.id);
         axios.post(
           apiUrl + "carts/createCartOnLogin?userID=" + res.data.user.id
         );
@@ -69,7 +67,6 @@ export default function AuthForm() {
     axios
       .post(apiUrl + "users/register", data)
       .then((res) => {
-        console.log(res.data.message);
         handleClick();
         navigate("/auth-form");
         axios.post(apiUrl + "users/send-verification-email", {
@@ -90,7 +87,6 @@ export default function AuthForm() {
 
   function handleClick() {
     setPages(!pages);
-    console.log(pages);
   }
   return (
     <>

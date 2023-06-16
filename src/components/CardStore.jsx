@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import axios from "axios";
 import useStore from "../store/store";
 import { Link } from "react-router-dom";
+import apiUrl from "../../api";
 
 export default function CardStore({ allProducts }) {
   const {
@@ -15,8 +16,6 @@ export default function CardStore({ allProducts }) {
     token,
     user,
   } = useStore();
-  console.log(favorites);
-  console.log(cart);
   const navigate = useNavigate();
   const goDetails = (id) => {
     navigate("/details/" + id);

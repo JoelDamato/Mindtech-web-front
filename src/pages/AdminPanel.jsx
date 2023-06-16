@@ -109,8 +109,6 @@ export default function AdminPanel({ allProducts, getAllProducts }) {
       setQuantity(0);
       setImages(null);
       getAllProducts();
-      console.log(res, "Producto creado");
-      console.log(newProduct);
     } catch (err) {
       console.log(err);
     }
@@ -182,12 +180,10 @@ export default function AdminPanel({ allProducts, getAllProducts }) {
     deleteProducts(dataDelete) // Llama a la función deleteProducts pasando los datos
       .then(() => {
         getAllProducts();
-        console.log("borrado con exito");
       })
       .catch((err) => {
         console.log(err);
       });
-    console.log(dataDelete);
   }
 
   //funciones para renderizar pantallas de create product

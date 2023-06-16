@@ -19,7 +19,6 @@ export default function Index() {
   const [click, setClick] = useState(false);
   const [cancelPayment, setCancelPayment] = useState(false);
   const { cart, formatPrice } = useStore();
-  console.log(cart?.products);
 
   const donate = () => {
     setClick(!click);
@@ -62,7 +61,6 @@ export default function Index() {
   const total = cart?.products.reduce((accumulator, product) => {
     return accumulator + Number(product.subtotal);
   }, 0);
-  console.log(total);
   return (
     <>
       <div className="flex flex-col  justify-center items-center w-full min-h-[100vh] bg-[#000000a9] ">

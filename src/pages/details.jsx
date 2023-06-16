@@ -8,7 +8,6 @@ export default function Details() {
   const cartItems = useStore((state) => state.cartItems);
   const setCartItems = useStore((state) => state.setCartItems);
   const { cart, setCart, oneProduct, getOneProduct } = useStore();
-  console.log(cart);
 
   const viewCart = (email) => {
     axios
@@ -33,8 +32,6 @@ export default function Details() {
       });
   };
 
-  console.log(cartItems);
-
   let [image, setImage] = useState(0);
   const { id } = useParams();
 
@@ -43,7 +40,6 @@ export default function Details() {
     window.scrollTo(0, 0);
   }, []);
 
-  console.log(oneProduct);
   function next(array) {
     setImage(image + 1);
     if (image === array.length - 1) {
